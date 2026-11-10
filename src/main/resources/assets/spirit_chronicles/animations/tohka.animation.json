@@ -1,0 +1,268 @@
+{
+  "animations": {
+    "animation.tohka.idle": {
+      "loop": true,
+      "animation_length": 2,
+      "bones": {
+        "head": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 1,
+              "vector": [
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "timestamp": 2,
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        "hair_back": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 1,
+              "vector": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 2,
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        "left_hair_lock": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 1,
+              "vector": [
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "timestamp": 2,
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        "right_hair_lock": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 1,
+              "vector": [
+                0,
+                0,
+                -2
+              ]
+            },
+            {
+              "timestamp": 2,
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "animation.tohka.walk": {
+      "loop": true,
+      "animation_length": 0.8,
+      "bones": {
+        "left_leg": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                25,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.4,
+              "vector": [
+                -25,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.8,
+              "vector": [
+                25,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        "right_leg": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                -25,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.4,
+              "vector": [
+                25,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.8,
+              "vector": [
+                -25,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        "left_arm": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                -20,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.4,
+              "vector": [
+                20,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.8,
+              "vector": [
+                -20,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        "right_arm": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                20,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.4,
+              "vector": [
+                -20,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.8,
+              "vector": [
+                20,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        "hair_back": {
+          "rotation": [
+            {
+              "timestamp": 0,
+              "vector": [
+                -4,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.4,
+              "vector": [
+                4,
+                0,
+                0
+              ]
+            },
+            {
+              "timestamp": 0.8,
+              "vector": [
+                -4,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
