@@ -3,6 +3,7 @@ package com.spiritchronicles.registry;
 import com.spiritchronicles.SpiritChronicles;
 import com.spiritchronicles.item.SpiritBurstItem;
 import com.spiritchronicles.item.SpiritGuardItem;
+import com.spiritchronicles.item.TohkaSummonItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -33,6 +34,11 @@ public final class ModItems {
                     new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)
             ));
 
+    public static final DeferredItem<TohkaSummonItem> TOHKA_SUMMON =
+            ITEMS.register("tohka_summon", () -> new TohkaSummonItem(
+                    new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.EPIC)
+            ));
+
     private ModItems() {
     }
 
@@ -44,6 +50,10 @@ public final class ModItems {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(SPIRIT_CRYSTAL);
             event.accept(SPIRIT_FRAGMENT);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(TOHKA_SUMMON);
         }
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
