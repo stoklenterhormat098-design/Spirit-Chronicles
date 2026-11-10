@@ -2,6 +2,7 @@ package com.spiritchronicles;
 
 import com.spiritchronicles.event.SpiritEvents;
 import com.spiritchronicles.registry.ModAttachments;
+import com.spiritchronicles.registry.ModEntities;
 import com.spiritchronicles.registry.ModItems;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -16,6 +17,8 @@ public final class SpiritChronicles {
 
     public SpiritChronicles(IEventBus modEventBus) {
         ModItems.register(modEventBus);
+        ModEntities.register(modEventBus);
+        modEventBus.addListener(ModEntities::registerAttributes);
         ModAttachments.register(modEventBus);
         modEventBus.addListener(ModItems::addCreative);
         NeoForge.EVENT_BUS.addListener(SpiritEvents::onPlayerTick);
