@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.function.Supplier;
 
 /**
- * Persistent data attachments used by Spirit Chronicles.
+ * Persistent and synchronized data attachments used by Spirit Chronicles.
  */
 public final class ModAttachments {
     private static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES =
@@ -19,6 +19,7 @@ public final class ModAttachments {
             ATTACHMENT_TYPES.register("player_data", () ->
                     AttachmentType.builder(SpiritPlayerData::new)
                             .serialize(SpiritPlayerData.CODEC)
+                            .sync((holder, player) -> holder == player, SpiritPlayerData.STREAM_CODEC)
                             .copyOnDeath()
                             .build()
             );
