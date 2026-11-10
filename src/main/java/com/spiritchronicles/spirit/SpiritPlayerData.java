@@ -2,6 +2,9 @@ package com.spiritchronicles.spirit;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 
 /**
  * Persistent gameplay data attached to each player.
@@ -17,6 +20,18 @@ public record SpiritPlayerData(int energy, int maxEnergy, int level, int experie
                     Codec.INT.fieldOf("experience").forGetter(SpiritPlayerData::experience)
             ).apply(instance, SpiritPlayerData::new)
     );
+
+    /**
+     * Sends the player's current Spirit status to their client for the HUD.
+     */
+    public static final StreamCodec<RegistryFriendlyByteBuf, SpiritPlayerData> STREAM_CODEC =
+            StreamCodec.composite(
+                    ByteBufCodecs.VAR_INT, SpiritPlayerData::energy,
+                    ByteBufCodecs.VAR_INT, SpiritPlayerData::maxEnergy,
+                    ByteBufCodecs.VAR_INT, SpiritPlayerData::level,
+                    ByteBufCodecs.VAR_INT, SpiritPlayerData::experience,
+                    SpiritPlayerData::new
+            );
 
     public SpiritPlayerData {
         maxEnergy = Math.max(1, maxEnergy);
