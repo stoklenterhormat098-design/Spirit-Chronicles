@@ -1,7 +1,7 @@
 package com.spiritchronicles.registry;
 
 import com.spiritchronicles.SpiritChronicles;
-import com.spiritchronicles.item.SpiritBurstItem;
+import com.spiritchronicles.item.SpiritBurstItem;\nimport com.spiritchronicles.item.SpiritGuardItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -27,6 +27,11 @@ public final class ModItems {
                     new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)
             ));
 
+    public static final DeferredItem<SpiritGuardItem> SPIRIT_GUARD =
+            ITEMS.register("spirit_guard", () -> new SpiritGuardItem(
+                    new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)
+            ));
+
     private ModItems() {
     }
 
@@ -41,7 +46,7 @@ public final class ModItems {
         }
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            event.accept(SPIRIT_BURST);
+            event.accept(SPIRIT_BURST);\n            event.accept(SPIRIT_GUARD);
         }
     }
 }
