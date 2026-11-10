@@ -2,5 +2,7 @@
   "item.spirit_chronicles.spirit_crystal": "Spirit Crystal",
   "item.spirit_chronicles.spirit_fragment": "Spirit Fragment",
   "item.spirit_chronicles.spirit_burst": "Spirit Burst",
-  "item.spirit_chronicles.spirit_guard": "Spirit Guard"
+  "item.spirit_chronicles.spirit_guard": "Spirit Guard",
+  "item.spirit_chronicles.tohka_summon": "Tohka Summon Token",
+  "entity.spirit_chronicles.tohka": "Tohka Yatogami"
 }
