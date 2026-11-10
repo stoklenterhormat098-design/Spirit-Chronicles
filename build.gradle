@@ -91,3 +91,79 @@ idea {
         downloadJavadoc = true
     }
 }
+
+ 
+// Generate the first Tohka texture atlas during the resource build.
+def tohkaTexture = layout.buildDirectory.file("generated/spiritAssets/assets/spirit_chronicles/textures/entity/tohka.png")
+
+tasks.register("generateTohkaTexture") {
+    outputs.file(tohkaTexture)
+    doLast {
+        def output = tohkaTexture.get().asFile
+        output.parentFile.mkdirs()
+
+        def image = new java.awt.image.BufferedImage(128, 128, java.awt.image.BufferedImage.TYPE_INT_ARGB)
+        def g = image.createGraphics()
+        g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON)
+
+        def region = { int x, int y, int w, int h, java.awt.Color top, java.awt.Color bottom ->
+            g.setPaint(new java.awt.GradientPaint(x, y, top, x, y + h, bottom))
+            g.fillRect(x, y, w, h)
+        }
+
+        // Skin, face and hands.
+        region(0, 0, 32, 32, new java.awt.Color(255, 225, 205), new java.awt.Color(218, 151, 135))
+        g.setColor(new java.awt.Color(126, 57, 91))
+        g.fillOval(6, 12, 5, 2)
+        g.fillOval(21, 12, 5, 2)
+        g.setColor(new java.awt.Color(111, 56, 93))
+        g.drawArc(12, 17, 9, 5, 10, 160)
+
+        // Long violet hair.
+        region(32, 0, 32, 48, new java.awt.Color(196, 151, 238), new java.awt.Color(82, 48, 133))
+        g.setColor(new java.awt.Color(226, 196, 255, 180))
+        for (int x = 35; x < 64; x += 7) g.fillRect(x, 3, 2, 40)
+
+        // Ivory Astral Dress fabric.
+        region(64, 0, 32, 48, new java.awt.Color(255, 255, 250), new java.awt.Color(190, 183, 211))
+        g.setColor(new java.awt.Color(220, 211, 239))
+        for (int y = 5; y < 48; y += 9) g.drawLine(65, y, 94, y)
+
+        // Deep purple skirt panels and ribbons.
+        region(96, 0, 32, 32, new java.awt.Color(177, 119, 220), new java.awt.Color(75, 42, 125))
+        g.setColor(new java.awt.Color(224, 195, 255))
+        for (int x = 98; x < 128; x += 8) g.drawLine(x, 2, x, 30)
+
+        // Gold ornaments and trim.
+        region(112, 32, 16, 32, new java.awt.Color(255, 231, 151), new java.awt.Color(161, 111, 42))
+        g.setColor(new java.awt.Color(255, 247, 207))
+        g.drawLine(114, 34, 114, 62)
+        g.drawLine(120, 34, 120, 62)
+
+        // Dark stockings and shoes.
+        region(0, 48, 32, 24, new java.awt.Color(100, 72, 126), new java.awt.Color(40, 33, 63))
+        g.setColor(new java.awt.Color(230, 213, 255))
+        g.fillRect(2, 49, 3, 20)
+        g.fillRect(18, 49, 3, 20)
+
+        // Sword: silver blade and violet-gold hilt.
+        region(96, 32, 16, 32, new java.awt.Color(244, 247, 255), new java.awt.Color(116, 126, 159))
+        g.setColor(new java.awt.Color(255, 232, 158))
+        g.fillRect(101, 70, 7, 4)
+        g.setColor(new java.awt.Color(117, 72, 164))
+        g.fillRect(103, 74, 3, 17)
+
+        // Small accent swatches used by sleeve, hem and sandal UVs.
+        region(32, 64, 32, 32, new java.awt.Color(246, 239, 255), new java.awt.Color(151, 126, 186))
+        region(64, 64, 32, 32, new java.awt.Color(255, 239, 185), new java.awt.Color(176, 127, 59))
+        region(96, 96, 32, 32, new java.awt.Color(162, 120, 202), new java.awt.Color(58, 43, 95))
+
+        g.dispose()
+        javax.imageio.ImageIO.write(image, "png", output)
+    }
+}
+
+sourceSets.main.resources.srcDir(layout.buildDirectory.dir("generated/spiritAssets"))
+tasks.named("processResources").configure {
+    dependsOn("generateTohkaTexture")
+}
