@@ -19,5 +19,6 @@ public final class SpiritChronicles {
         ModAttachments.register(modEventBus);
         modEventBus.addListener(ModItems::addCreative);
         NeoForge.EVENT_BUS.addListener(SpiritEvents::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(SpiritEvents::onLivingDeath);
     }
 }
